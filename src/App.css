@@ -1,7 +1,9 @@
+body{
+    background-color: hotpink;
+}
 a{
     text-decoration: none;
 }
-
 .app{
     padding-left: 60px;
     padding-right: 60px;
@@ -16,6 +18,12 @@ a{
     margin: 10px 0px;
     color: white;
     transition: .4s;
+}
+.cocktailSearch{
+    background-color: greenyellow;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0px;
 }
 .cocktailNavigationLink:hover{
     background-color: pink;
