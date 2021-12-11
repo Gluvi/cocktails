@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-
 import CocktailDetails from './CocktailDetails';
 
 export default function CocktailList({cocktails}) {
@@ -8,15 +7,23 @@ export default function CocktailList({cocktails}) {
         <>
             <h1>Popis koktela</h1>
             {(cocktails) ? 
-            (cocktails.map((cocktail, index) => (
-                <div key={cocktail.idDrink}>
-                    <Routes>
-                        <Route path={"/" + cocktail.idDrink} element={<CocktailDetails key={cocktail.idDrink} idCocktail={cocktail.idDrink} cocktailDetails={cocktail} />} />
-                    </Routes>
-                    <Link to={"/" + cocktail.idDrink}><p className='cocktailNavigationLink'>{cocktail.strDrink}</p></Link>
-                </div>
+            (cocktails.map((cocktail) => (
+            <>
+                <Routes  key={cocktail.idDrink}>
+                    <Route 
+                        path={"/" + cocktail.idDrink} 
+                        element={
+                        <CocktailDetails 
+                            idCocktail={cocktail.idDrink} 
+                            cocktailDetails={cocktail} 
+                        />
+                        } 
+                    />
+                </Routes>
+                <Link to={"/" + cocktail.idDrink}><p className='cocktailNavigationLink'>{cocktail.strDrink}</p></Link>
+            </>
             )))
-            : (<p>Nema traženih koktela</p>)
+            : (<p>Ne postoji traženi koktel</p>)
             }
         </>
     );

@@ -4,7 +4,12 @@ export default function SearchCoctail({searchCocktail}) {
     return(
         <div className='cocktailSearch'>
             <h1>Traži koktel</h1>
-            <input type='text' onChange={searchCocktail} placeholder='Unesi koktel' />
+            <input 
+                className='searchInput'
+                type='text' 
+                onChange={searchCocktail} 
+                placeholder='Naziv koktela' 
+            />
         </div>
     );
 }

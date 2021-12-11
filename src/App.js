@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import CocktailList from './components/CocktailList';
 import SearchCoctail from './components/SearchCocktail';
+import Navigacija from './components/Navigacija';
 import './App.css';
+
 let link = 'a';
 
 export default function App() {
@@ -14,21 +15,35 @@ export default function App() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + link)
       .then(response => response.json())
       .then(cocktailData => setData(cocktailData))
+      .catch(error => error)
 }
 
 useEffect(() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + link)
       .then(response => response.json())
-      .then(cocktailData => setData(cocktailData));
+      .then(cocktailData => setData(cocktailData))
+      .catch(error => error)
   }, []);
 
   if (!data) {
-    return <div className='app'>Učitavam koktele</div>;
+    return(
+      <div className='app'>
+        <SearchCoctail 
+          searchCocktail={handleSearchCocktail} 
+        />
+        <h1>Učitavanje koktela...</h1>
+      </div>
+    );
   }
 return(
   <div className='app'>
-    <SearchCoctail searchCocktail={handleSearchCocktail} />
-    <CocktailList cocktails={data.drinks} />
+    <Navigacija />
+    <SearchCoctail 
+      searchCocktail={handleSearchCocktail} 
+    />
+    <CocktailList 
+      cocktails={data.drinks} 
+    />
   </div>
 
   );
