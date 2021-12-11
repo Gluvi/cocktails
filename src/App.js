@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import CocktailList from './components/CocktailList';
+import SearchCoctail from './components/SearchCocktail';
+import './App.css';
+let link = 'a';
+
+export default function App() {
+  const [data, setData] = useState(null);
+
+  const handleSearchCocktail = (event) => {
+    link = event.target.value;
+    
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + link)
+      .then(response => response.json())
+      .then(cocktailData => setData(cocktailData))
 }
 
-export default App;
+useEffect(() => {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=' + link)
+      .then(response => response.json())
+      .then(cocktailData => setData(cocktailData));
+  }, []);
+
+  if (!data) {
+    return <div className='app'>Učitavam koktele</div>;
+  }
+return(
+  <div className='app'>
+    <SearchCoctail searchCocktail={handleSearchCocktail} />
+    <CocktailList cocktails={data.drinks} />
+  </div>
+
+  );
+}
