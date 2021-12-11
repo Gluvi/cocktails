@@ -12,22 +12,28 @@ a{
     margin-bottom: 100px;
 }
 .cocktailNavigationLink{
-    background-color: purple;
+    background-color: rgba(255, 255, 255, .6);
+    color: #fff;
     border-radius: 10px;
     padding: 20px;
     margin: 10px 0px;
-    color: white;
     transition: .4s;
+}
+.cocktailNavigationLink:hover{
+    background-color: white;
+    color: #333;
+    font-weight: 800;
+    font-size: 2em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+    transition: .4s;
+    transform: scale(1.02);
+    padding-left: 40px;
 }
 .cocktailSearch{
     background-color: greenyellow;
     border-radius: 10px;
     padding: 20px;
     margin: 10px 0px;
-}
-.cocktailNavigationLink:hover{
-    background-color: pink;
-    transition: .4s;
 }
 .cocktailDetails{
     background-color: pink;
