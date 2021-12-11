@@ -10,14 +10,14 @@ export default function App() {
 
   const handleSearchCocktail = (event) => {
     link = event.target.value;
-    
+
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + link)
       .then(response => response.json())
       .then(cocktailData => setData(cocktailData))
 }
 
 useEffect(() => {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=' + link)
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + link)
       .then(response => response.json())
       .then(cocktailData => setData(cocktailData));
   }, []);
