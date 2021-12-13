@@ -4,10 +4,9 @@ import SearchCoctail from './components/SearchCocktail';
 import Navigacija from './components/Navigacija';
 import './App.css';
 
-let link = 'a';
-
 export default function App() {
   const [data, setData] = useState(null);
+  let link = '';
 
   const handleSearchCocktail = (event) => {
     link = event.target.value;
