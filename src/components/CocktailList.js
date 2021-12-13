@@ -8,8 +8,8 @@ export default function CocktailList({cocktails}) {
             <h1>Popis koktela</h1>
             {(cocktails) ? 
             (cocktails.map((cocktail) => (
-            <>
-                <Routes  key={cocktail.idDrink}>
+            <div key={cocktail.idDrink}>
+                <Routes>
                     <Route 
                         path={"/" + cocktail.idDrink} 
                         element={
@@ -21,7 +21,7 @@ export default function CocktailList({cocktails}) {
                     />
                 </Routes>
                 <Link to={"/" + cocktail.idDrink}><p className='cocktailNavigationLink'>{cocktail.strDrink}</p></Link>
-            </>
+            </div>
             )))
             : (<p>Ne postoji traženi koktel</p>)
             }
